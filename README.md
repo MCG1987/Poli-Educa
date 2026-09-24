@@ -1,106 +1,71 @@
-# Poli-Educa - Entrega 2 (Semana 5)
+Poli-Educa
 
-Prototipo funcional de una plataforma Web de noticias educativas desarrollado con **HTML, CSS y JavaScript**, con carga dinámica desde **JSON**, favoritos con **localStorage**, formularios con validación y gestión básica de noticias.
+Entrega semana 5
 
-## Funcionalidades incluidas
+Este proyecto es un prototipo de una pagina de noticias educativas.
 
-- Home con bienvenida, llamados a la acción y noticias destacadas dinámicas.
-- Listado de noticias cargado desde `data/noticias.json` mediante `fetch()`.
-- Búsqueda por texto, filtros por categoría y paginación.
-- Vista de detalle por identificador (`detalle.html?id=...`).
-- Favoritos persistentes con `localStorage`.
-- Página personalizada de favoritos con opción de quitar noticias.
-- Formulario de contacto con campos obligatorios, validación de correo y mensaje de confirmación.
-- Página Nosotros.
-- Mini CRUD requerido: creación y eliminación de noticias desde `gestion.html`.
-- Persistencia local para las noticias creadas/eliminadas sin modificar el JSON original.
-- Diseño responsive para escritorio, tableta y móvil.
-- Código separado por responsabilidades y comentado.
-- Recursos gráficos locales en SVG, sin dependencias externas.
+Se desarrollo usando HTML, CSS y JavaScript.
 
-## Estructura
+Las noticias principales se cargan desde un archivo JSON.
 
-```text
-poli-educa/
-├── index.html
-├── noticias.html
-├── detalle.html
-├── favoritos.html
-├── nosotros.html
-├── contacto.html
-├── gestion.html
-├── css/
-│   └── styles.css
-├── data/
-│   └── noticias.json
-├── img/
-│   ├── logo.svg
-│   └── noticia-1.svg ... noticia-9.svg
-├── js/
-│   ├── common.js
-│   ├── data.js
-│   ├── home.js
-│   ├── noticias.js
-│   ├── detalle.js
-│   ├── favoritos.js
-│   ├── contacto.js
-│   └── gestion.js
-├── iniciar.bat
-├── VERIFICACION.md
-└── README.md
-```
+El proyecto tiene las siguientes paginas:
 
-## Cómo ejecutar
+Inicio
+Noticias
+Detalle de noticia
+Favoritos
+Nosotros
+Contacto
+Gestion de noticias
 
-### Opción recomendada en Windows
+En la pagina de inicio se muestran algunas noticias destacadas.
 
-Haz doble clic en `iniciar.bat`. El script abre un servidor local en:
+En noticias se puede buscar, filtrar por categoria y cambiar entre paginas.
 
-`http://localhost:5500`
+Al seleccionar una noticia se puede ver el detalle completo.
 
-### Opción manual
+Tambien se pueden guardar noticias como favoritas.
 
-Desde la carpeta del proyecto ejecuta:
+Los favoritos se guardan en localStorage para que no se pierdan al actualizar la pagina.
 
-```bash
+La pagina de contacto tiene validaciones para los campos obligatorios y para el correo electronico.
+
+Tambien existe una opcion para gestionar noticias.
+
+Desde gestion se pueden crear noticias nuevas y eliminar noticias.
+
+Como el proyecto no tiene backend, los cambios realizados desde gestion se guardan en localStorage.
+
+El archivo data/noticias.json contiene las noticias iniciales.
+
+Las carpetas principales del proyecto son:
+
+css
+data
+img
+js
+
+El archivo principal es index.html.
+
+Para ejecutar el proyecto se puede usar el archivo iniciar.bat en Windows.
+
+Tambien se puede abrir una terminal dentro de la carpeta del proyecto y ejecutar:
+
 python -m http.server 5500
-```
 
-Luego abre `http://localhost:5500`.
+Luego se abre en el navegador:
 
-> El proyecto intenta cargar las noticias desde `data/noticias.json` con `fetch()`. También contiene una copia de respaldo en JavaScript para que el prototipo pueda visualizarse aun cuando el navegador bloquee `fetch()` al abrir los archivos directamente con `file://`.
+http://localhost:5500
 
-## Cómo verificar los requisitos
+Se recomienda ejecutarlo con el servidor local para que la carga del JSON funcione correctamente.
 
-1. Abre **Inicio**: deben aparecer tres noticias destacadas cargadas dinámicamente.
-2. Abre **Noticias**: prueba búsqueda, categorías y flechas de paginación.
-3. Pulsa **Ver más**: debe abrir el detalle de la noticia seleccionada.
-4. Agrega una noticia a **Favoritos** y comprueba que permanece tras recargar la página.
-5. Entra a **Favoritos** y prueba **Ver detalle** y **Quitar**.
-6. Abre **Contacto**, deja campos vacíos o escribe un correo inválido y comprueba las validaciones. Luego completa correctamente el formulario y verifica el mensaje de confirmación.
-7. Desde **Noticias**, entra a **Gestionar noticias**. Crea una noticia y luego elimínala. También puedes eliminar una noticia base y restaurar el listado original.
-8. Cambia el ancho de la ventana para comprobar el diseño responsive.
+El diseño se realizo tomando como referencia los mockups desarrollados anteriormente en Figma.
 
-## Manejo de datos
+El proyecto tambien cuenta con diseño responsive para adaptarse a diferentes tamaños de pantalla.
 
-`data/noticias.json` contiene las noticias base. Como este proyecto es únicamente Front-End y no incluye backend, el navegador no puede modificar directamente ese archivo. Por esa razón:
+Repositorio:
 
-- Las noticias nuevas se guardan en `localStorage`.
-- Las noticias eliminadas se registran en `localStorage` y se ocultan de la fuente base.
-- El botón **Restaurar base** elimina esos cambios locales.
-- Los favoritos también se almacenan en `localStorage`.
+MCG1987/Poli-Educa
 
-## Repositorio GitHub
-
-El proyecto está preparado para subirse directamente a GitHub. Una vez creado el repositorio, desde esta carpeta puede ejecutarse:
-
-```bash
-git init
-git add .
-git commit -m "Entrega 2: prototipo funcional Poli-Educa"
-git branch -M main
-git remote add origin URL_DEL_REPOSITORIO
-git push -u origin main
-```
-
-No se requieren dependencias ni proceso de compilación, por lo que puede publicarse directamente con GitHub Pages desde la rama `main`.
+Entrega 2
+Desarrollo Front-End
