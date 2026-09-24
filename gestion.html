@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gestión básica de noticias de Poli-Educa.">
+  <title>Gestión de noticias | Poli-Educa</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="noticias">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="container">
+    <header class="page-heading page-heading-row">
+      <div>
+        <h1>Gestión de noticias</h1>
+        <p>Mini CRUD solicitado para el prototipo: creación y eliminación de noticias.</p>
+      </div>
+      <a class="btn btn-outline" href="noticias.html">← Volver al listado</a>
+    </header>
+
+    <p class="admin-note">Los cambios de esta pantalla se guardan en <strong>localStorage</strong>. El archivo JSON permanece como fuente base del prototipo.</p>
+
+    <section class="admin-layout">
+      <div class="admin-panel">
+        <h2>Crear noticia</h2>
+        <form id="news-admin-form">
+          <div class="form-grid">
+            <div class="field-group">
+              <label for="admin-title">Título *</label>
+              <input id="admin-title" name="titulo" type="text" minlength="8" required>
+            </div>
+            <div class="field-group">
+              <label for="admin-category">Categoría *</label>
+              <select id="admin-category" name="categoria" required>
+                <option>Educación</option>
+                <option>Tecnología</option>
+                <option>Becas</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="admin-date">Fecha *</label>
+              <input id="admin-date" name="fecha" type="date" required>
+            </div>
+            <div class="field-group">
+              <label for="admin-description">Descripción breve *</label>
+              <textarea id="admin-description" name="descripcion" minlength="20" maxlength="240" required></textarea>
+            </div>
+            <div class="field-group">
+              <label for="admin-content">Contenido *</label>
+              <textarea id="admin-content" name="contenido" minlength="40" required placeholder="Puedes separar párrafos dejando una línea en blanco."></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Crear noticia</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="admin-panel">
+        <div class="section-heading">
+          <div><h2>Noticias disponibles</h2><p>También puedes eliminar noticias base o creadas desde este prototipo.</p></div>
+          <button id="reset-news" class="btn btn-outline" type="button">Restaurar base</button>
+        </div>
+        <div id="admin-news-list" class="admin-list" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/common.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/gestion.js"></script>
+</body>
+</html>

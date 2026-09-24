@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Formulario de contacto de Poli-Educa.">
+  <title>Contacto | Poli-Educa</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="contacto">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="container">
+    <header class="page-heading">
+      <h1>Contáctanos</h1>
+      <p>¿Tienes alguna pregunta, sugerencia o quieres colaborar con nosotros? Escríbenos, estaremos encantados de leerte.</p>
+    </header>
+
+    <section class="contact-layout">
+      <div class="form-card">
+        <div id="contact-success" class="form-success" hidden></div>
+        <form id="contact-form" novalidate>
+          <div class="form-grid">
+            <div class="field-group">
+              <label for="nombre">Nombre completo *</label>
+              <input id="nombre" name="nombre" type="text" placeholder="Tu nombre..." minlength="3" required aria-describedby="error-nombre">
+              <span id="error-nombre" class="field-error"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="email">Correo electrónico *</label>
+              <input id="email" name="email" type="email" placeholder="tu.correo@ejemplo.com" required aria-describedby="error-email">
+              <span id="error-email" class="field-error"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="asunto">Asunto *</label>
+              <select id="asunto" name="asunto" required aria-describedby="error-asunto">
+                <option value="">Selecciona un asunto...</option>
+                <option>Información sobre una noticia</option>
+                <option>Sugerencia de contenido</option>
+                <option>Colaboración</option>
+                <option>Otro</option>
+              </select>
+              <span id="error-asunto" class="field-error"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="mensaje">Mensaje *</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." minlength="10" required aria-describedby="error-mensaje"></textarea>
+              <span id="error-mensaje" class="field-error"></span>
+            </div>
+
+            <div><button class="btn btn-primary" type="submit">Enviar mensaje</button></div>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact-panel">
+        <h2>Otras formas de contacto</h2>
+        <div class="contact-list">
+          <div class="contact-item"><small>Correo</small><a href="mailto:mcadavidg@poligran.edu.co">mcadavidg@poligran.edu.co</a></div>
+          <div class="contact-item"><small>Teléfono</small><a href="tel:+573000100120">+57 300 010 01 20</a></div>
+          <div class="contact-item"><small>Ubicación</small><span>Medellín, Colombia</span></div>
+        </div>
+
+        <strong>Síguenos en redes sociales</strong>
+        <div class="social-row" aria-label="Redes sociales de ejemplo"><span>f</span><span>X</span><span>ig</span><span>yt</span></div>
+
+        <div class="map-placeholder">
+          <div><strong>Nuestra ubicación</strong><br>Medellín, Colombia</div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/common.js"></script>
+  <script src="js/contacto.js"></script>
+</body>
+</html>

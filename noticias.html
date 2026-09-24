@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Listado dinámico de noticias de Poli-Educa.">
+  <title>Noticias | Poli-Educa</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="noticias">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div id="site-header"></div>
+
+  <main id="main" class="container">
+    <header class="page-heading">
+      <h1>Listado de noticias</h1>
+      <p>Mantente informado sobre temas de educación, tecnología y becas.</p>
+    </header>
+
+    <section aria-label="Búsqueda y filtros">
+      <div class="news-tools">
+        <label class="search-box">
+          <span class="sr-only" style="position:absolute;left:-9999px">Buscar noticias</span>
+          <input id="news-search" type="search" placeholder="Buscar noticias..." autocomplete="off">
+        </label>
+        <div id="category-filters" class="filter-group" aria-label="Filtrar por categoría">
+          <button class="filter-button active" type="button" data-category="Todas">Todas</button>
+          <button class="filter-button" type="button" data-category="Educación">Educación</button>
+          <button class="filter-button" type="button" data-category="Tecnología">Tecnología</button>
+          <button class="filter-button" type="button" data-category="Becas">Becas</button>
+        </div>
+      </div>
+
+      <div class="news-toolbar-meta">
+        <span id="result-count">Cargando noticias...</span>
+        <a class="text-link admin-shortcut" href="gestion.html">Gestionar noticias</a>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-label="Noticias disponibles">
+      <div id="news-grid" class="news-grid" aria-live="polite"></div>
+      <div class="pagination" aria-label="Paginación de noticias">
+        <button id="page-prev" type="button" aria-label="Página anterior">‹</button>
+        <span id="page-status">Página 1 de 1</span>
+        <button id="page-next" type="button" aria-label="Página siguiente">›</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/common.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/noticias.js"></script>
+</body>
+</html>
