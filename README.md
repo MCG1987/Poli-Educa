@@ -52,12 +52,6 @@ poli-educa/
 
 ## Cómo ejecutar
 
-### Opción recomendada en Windows
-
-Haz doble clic en `iniciar.bat`. El script abre un servidor local en:
-
-`http://localhost:5500`
-
 ### Opción manual
 
 Desde la carpeta del proyecto ejecuta:
