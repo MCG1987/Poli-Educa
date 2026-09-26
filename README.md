@@ -45,7 +45,6 @@ poli-educa/
 │   ├── favoritos.js
 │   ├── contacto.js
 │   └── gestion.js
-├── iniciar.bat
 ├── VERIFICACION.md
 └── README.md
 ```
