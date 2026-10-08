@@ -1,0 +1,30 @@
+<article class="news-card">
+  <a [routerLink]="['/noticias', news.id]" class="news-card-image-link" [attr.aria-label]="'Ver detalle de ' + news.titulo">
+    <img class="news-card-image" [src]="news.imagen" [alt]="'Ilustración de ' + news.titulo">
+  </a>
+
+  <div class="news-card-body">
+    <div class="news-card-topline">
+      <span class="category-chip">{{ news.categoria }}</span>
+      <time [attr.datetime]="news.fecha">{{ formatDate(news.fecha) }}</time>
+    </div>
+
+    <h3><a [routerLink]="['/noticias', news.id]">{{ news.titulo }}</a></h3>
+    <p>{{ news.descripcion }}</p>
+
+    <div class="news-card-actions">
+      <a class="btn btn-outline" [routerLink]="['/noticias', news.id]">Ver más</a>
+
+      @if (showFavorite) {
+        <button
+          type="button"
+          class="favorite-mini"
+          [class.is-favorite]="isFavorite"
+          [attr.aria-pressed]="isFavorite"
+          (click)="toggleFavorite()">
+          {{ isFavorite ? '★ Guardada' : '☆ Favorito' }}
+        </button>
+      }
+    </div>
+  </div>
+</article>

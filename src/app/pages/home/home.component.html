@@ -1,12 +1,12 @@
-<main>
+<main id="main">
   <section class="hero">
     <div class="container hero-content">
-      <p class="eyebrow">POLI-EDUCA</p>
+      <span class="eyebrow">Noticias educativas</span>
       <h1>Conocimiento para un mejor mañana</h1>
-      <p>Explora noticias educativas, tecnológicas y oportunidades de formación.</p>
+      <p>Información clara sobre educación, tecnología y oportunidades para estudiantes.</p>
       <div class="hero-actions">
-        <a class="button primary" routerLink="/noticias">Explorar noticias</a>
-        <a class="button secondary" routerLink="/contacto">Contáctanos</a>
+        <a class="btn btn-primary" routerLink="/noticias">Explorar noticias</a>
+        <a class="btn btn-outline" routerLink="/contacto">Contáctanos</a>
       </div>
     </div>
   </section>
@@ -14,13 +14,30 @@
   <section class="container section">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">ACTUALIDAD</p>
+        <span class="eyebrow">Actualidad</span>
         <h2>Noticias destacadas</h2>
       </div>
+      <a class="btn btn-outline" routerLink="/noticias">Ver todas</a>
     </div>
 
-    <div class="empty-state">
-      <p>En el siguiente paso se conectarán aquí las noticias dinámicas de Poli-Educa.</p>
+    @if (error) {
+      <p class="status-message error">{{ error }}</p>
+    } @else {
+      <div class="news-grid">
+        @for (item of featured; track item.id) {
+          <app-news-card [news]="item"></app-news-card>
+        }
+      </div>
+    }
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <div>
+        <span class="eyebrow">Sigue explorando</span>
+        <h2>Encuentra información útil para tu formación</h2>
+      </div>
+      <a class="btn btn-primary" routerLink="/noticias">Explorar noticias</a>
     </div>
   </section>
 </main>

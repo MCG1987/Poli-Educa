@@ -1,10 +1,66 @@
-<main class="container section">
-  <div class="page-heading">
-    <p class="eyebrow">DETALLE</p>
-    <h1>Detalle de la noticia</h1>
-  </div>
+<main id="main" class="container section">
+  @if (error) {
+    <div class="empty-state">
+      <h1>Noticia no disponible</h1>
+      <p>{{ error }}</p>
+      <a class="btn btn-primary" routerLink="/noticias">Volver a noticias</a>
+    </div>
+  } @else if (item; as news) {
+    <a class="back-link" routerLink="/noticias">← Volver a noticias</a>
 
-  <div class="empty-state">
-    <p>Esta ruta recibirá el identificador de la noticia y mostrará su información completa.</p>
-  </div>
+    <div class="article-layout">
+      <article class="article-main">
+        <span class="category-chip">{{ news.categoria }}</span>
+        <h1>{{ news.titulo }}</h1>
+        <p class="article-meta">Publicado el {{ formatDate(news.fecha) }} · {{ news.autor }}</p>
+        <img class="article-image" [src]="news.imagen" [alt]="'Ilustración de ' + news.titulo">
+
+        <div class="article-copy">
+          @for (paragraph of news.contenido; track $index) {
+            <p>{{ paragraph }}</p>
+          }
+        </div>
+      </article>
+
+      <aside class="article-sidebar" aria-label="Acciones de la noticia">
+        <button
+          type="button"
+          class="btn btn-primary btn-block"
+          [class.is-favorite]="isFavorite"
+          [attr.aria-pressed]="isFavorite"
+          (click)="toggleFavorite()">
+          {{ isFavorite ? '★ Guardada en favoritos' : '☆ Agregar a favoritos' }}
+        </button>
+
+        <div class="sidebar-section">
+          <h2>Compartir</h2>
+          <button class="btn btn-outline btn-block" type="button" (click)="copyLink()">Copiar enlace</button>
+          <a class="btn btn-outline btn-block" [href]="mailto(news)">Compartir por correo</a>
+        </div>
+
+        <div class="sidebar-section">
+          <h2>Información</h2>
+          <p><strong>Categoría:</strong> {{ news.categoria }}</p>
+          <p><strong>Fecha:</strong> {{ formatDate(news.fecha) }}</p>
+        </div>
+      </aside>
+    </div>
+
+    @if (related.length) {
+      <section class="related-section">
+        <h2>Noticias relacionadas</h2>
+        <div class="related-list">
+          @for (relatedNews of related; track relatedNews.id) {
+            <a class="related-item" [routerLink]="['/noticias', relatedNews.id]">
+              <img [src]="relatedNews.imagen" alt="">
+              <span>
+                <strong>{{ relatedNews.titulo }}</strong>
+                <small>{{ relatedNews.categoria }}</small>
+              </span>
+            </a>
+          }
+        </div>
+      </section>
+    }
+  }
 </main>

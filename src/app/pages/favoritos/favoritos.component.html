@@ -1,11 +1,40 @@
-<main class="container section">
-  <div class="page-heading">
-    <p class="eyebrow">TU LISTA</p>
-    <h1>Favoritos</h1>
-    <p>Aquí se mostrarán las noticias guardadas por el usuario.</p>
-  </div>
+<main id="main" class="container">
+  <header class="page-heading page-heading-row">
+    <div>
+      <h1>Mis favoritos</h1>
+      <p>Aquí puedes consultar las noticias que has guardado.</p>
+    </div>
+    <span class="count-label">
+      {{ favorites.length }} noticia{{ favorites.length === 1 ? '' : 's' }} guardada{{ favorites.length === 1 ? '' : 's' }}
+    </span>
+  </header>
 
-  <div class="empty-state">
-    <p>La persistencia con localStorage se conectará en el siguiente paso.</p>
-  </div>
+  @if (error) {
+    <p class="status-message error">{{ error }}</p>
+  } @else if (!favorites.length) {
+    <div class="empty-state wide">
+      <h2>Aún no tienes favoritos</h2>
+      <p>Guarda las noticias que quieras consultar más adelante.</p>
+      <a class="btn btn-primary" routerLink="/noticias">Explorar noticias</a>
+    </div>
+  } @else {
+    <section class="section-tight news-grid" aria-label="Noticias favoritas">
+      @for (item of favorites; track item.id) {
+        <article class="news-card">
+          <a [routerLink]="['/noticias', item.id]" class="news-card-image-link">
+            <img class="news-card-image" [src]="item.imagen" [alt]="'Ilustración de ' + item.titulo">
+          </a>
+          <div class="news-card-body">
+            <span class="category-chip">{{ item.categoria }}</span>
+            <h3><a [routerLink]="['/noticias', item.id]">{{ item.titulo }}</a></h3>
+            <p>{{ item.descripcion }}</p>
+            <div class="news-card-actions">
+              <a class="btn btn-outline" [routerLink]="['/noticias', item.id]">Ver detalle</a>
+              <button class="btn-link danger" type="button" (click)="remove(item.id)">Quitar</button>
+            </div>
+          </div>
+        </article>
+      }
+    </section>
+  }
 </main>

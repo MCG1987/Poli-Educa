@@ -1,16 +1,36 @@
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" routerLink="/" aria-label="Ir al inicio de Poli-Educa">
-      <img src="img/logo.svg" alt="Logo Poli-Educa">
-      <span>Poli-Educa</span>
+    <a class="brand" routerLink="/" (click)="closeMenu()" aria-label="Ir al inicio de Poli-Educa">
+      <img src="img/logo.svg" alt="" class="brand-logo">
+      <span class="brand-text">
+        <strong>Poli-Educa</strong>
+        <small>Noticias que impulsan tu futuro</small>
+      </span>
     </a>
 
-    <nav class="main-nav" aria-label="Navegación principal">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
-      <a routerLink="/noticias" routerLinkActive="active">Noticias</a>
-      <a routerLink="/favoritos" routerLinkActive="active">Favoritos</a>
-      <a routerLink="/nosotros" routerLinkActive="active">Nosotros</a>
-      <a routerLink="/contacto" routerLinkActive="active">Contacto</a>
+    <button
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen"
+      aria-controls="main-nav"
+      (click)="toggleMenu()">
+      Menú
+    </button>
+
+    <nav id="main-nav" class="main-nav" [class.open]="menuOpen" aria-label="Navegación principal">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Inicio</a>
+      <a routerLink="/noticias" routerLinkActive="active" (click)="closeMenu()">Noticias</a>
+      <a routerLink="/favoritos" routerLinkActive="active" (click)="closeMenu()">
+        Favoritos
+        <span
+          class="favorites-badge"
+          [hidden]="((favoritesCount$ | async) ?? 0) === 0"
+          aria-label="cantidad de favoritos">
+          {{ (favoritesCount$ | async) ?? 0 }}
+        </span>
+      </a>
+      <a routerLink="/nosotros" routerLinkActive="active" (click)="closeMenu()">Nosotros</a>
+      <a routerLink="/contacto" routerLinkActive="active" (click)="closeMenu()">Contacto</a>
     </nav>
   </div>
 </header>

@@ -1,11 +1,86 @@
-<main class="container section">
-  <div class="page-heading">
-    <p class="eyebrow">ADMINISTRACIÓN LOCAL</p>
-    <h1>Gestión de noticias</h1>
-    <p>Desde esta vista se podrán crear y eliminar noticias del prototipo.</p>
-  </div>
+<main id="main" class="container">
+  <header class="page-heading page-heading-row">
+    <div>
+      <h1>Gestión de noticias</h1>
+      <p>Mini CRUD solicitado para el prototipo: creación y eliminación de noticias.</p>
+    </div>
+    <a class="btn btn-outline" routerLink="/noticias">← Volver al listado</a>
+  </header>
 
-  <div class="empty-state">
-    <p>El mini CRUD de Semana 5 se conectará a esta vista en el siguiente paso.</p>
-  </div>
+  <p class="admin-note">
+    Los cambios de esta pantalla se guardan en <strong>localStorage</strong>.
+    El archivo JSON permanece como fuente base del prototipo.
+  </p>
+
+  <section class="admin-layout">
+    <div class="admin-panel">
+      <h2>Crear noticia</h2>
+      <form #newsForm="ngForm" (ngSubmit)="create(newsForm)">
+        <div class="form-grid">
+          <div class="field-group">
+            <label for="admin-title">Título *</label>
+            <input id="admin-title" name="titulo" type="text" [(ngModel)]="model.titulo" minlength="8" required>
+          </div>
+
+          <div class="field-group">
+            <label for="admin-category">Categoría *</label>
+            <select id="admin-category" name="categoria" [(ngModel)]="model.categoria" required>
+              <option>Educación</option>
+              <option>Tecnología</option>
+              <option>Becas</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="admin-date">Fecha *</label>
+            <input id="admin-date" name="fecha" type="date" [(ngModel)]="model.fecha" required>
+          </div>
+
+          <div class="field-group">
+            <label for="admin-description">Descripción breve *</label>
+            <textarea id="admin-description" name="descripcion" [(ngModel)]="model.descripcion" minlength="20" maxlength="240" required></textarea>
+          </div>
+
+          <div class="field-group">
+            <label for="admin-content">Contenido *</label>
+            <textarea id="admin-content" name="contenido" [(ngModel)]="model.contenido" minlength="40" required placeholder="Puedes separar párrafos dejando una línea en blanco."></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Crear noticia</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="admin-panel">
+      <div class="section-heading">
+        <div>
+          <h2>Noticias disponibles</h2>
+          <p>También puedes eliminar noticias base o creadas desde este prototipo.</p>
+        </div>
+        <button class="btn btn-outline" type="button" (click)="reset()">Restaurar base</button>
+      </div>
+
+      @if (error) {
+        <p class="status-message error">{{ error }}</p>
+      } @else {
+        <div class="admin-list" aria-live="polite">
+          @for (item of news; track item.id) {
+            <article class="admin-item">
+              <div>
+                <span class="category-chip">{{ item.categoria }}</span>
+                <h3>{{ item.titulo }}</h3>
+                <p>{{ item.descripcion }}</p>
+                <small>{{ item.personalizada ? 'Noticia creada desde el prototipo' : 'Noticia base cargada desde JSON' }}</small>
+              </div>
+
+              <div class="admin-actions">
+                <a class="btn btn-outline" [routerLink]="['/noticias', item.id]">Ver</a>
+                <button class="btn btn-danger" type="button" (click)="remove(item)">Eliminar</button>
+              </div>
+            </article>
+          }
+        </div>
+      }
+    </div>
+  </section>
 </main>
