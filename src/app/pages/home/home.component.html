@@ -1,43 +1,58 @@
 <main id="main">
   <section class="hero">
-    <div class="container hero-content">
-      <span class="eyebrow">Noticias educativas</span>
-      <h1>Conocimiento para un mejor mañana</h1>
-      <p>Información clara sobre educación, tecnología y oportunidades para estudiantes.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" routerLink="/noticias">Explorar noticias</a>
-        <a class="btn btn-outline" routerLink="/contacto">Contáctanos</a>
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Información educativa</span>
+        <h1>Conocimiento para un mejor mañana</h1>
+        <p>Explora noticias sobre educación, tecnología y oportunidades de becas en un espacio sencillo y organizado.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" routerLink="/noticias">Explorar noticias</a>
+          <a class="btn btn-outline" routerLink="/contacto">Contáctanos</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Representación visual del contenido educativo">
+        <span class="visual-label">Poli-Educa</span>
+        <h2>Noticias para aprender, descubrir y avanzar.</h2>
+        <div class="hero-visual-bars" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="container section">
-    <div class="section-heading">
-      <div>
-        <span class="eyebrow">Actualidad</span>
-        <h2>Noticias destacadas</h2>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Selección principal</span>
+          <h2>Noticias destacadas</h2>
+          <p>Contenido recomendado para comenzar a explorar la plataforma.</p>
+        </div>
+        <a class="text-link" routerLink="/noticias">Ver todas las noticias →</a>
       </div>
-      <a class="btn btn-outline" routerLink="/noticias">Ver todas</a>
-    </div>
 
-    @if (error) {
-      <p class="status-message error">{{ error }}</p>
-    } @else {
-      <div class="news-grid">
-        @for (item of featured; track item.id) {
-          <app-news-card [news]="item"></app-news-card>
-        }
-      </div>
-    }
+      @if (error) {
+        <p class="status-message error">{{ error }}</p>
+      } @else {
+        <div class="news-grid" aria-live="polite">
+          @for (item of featured; track item.id) {
+            <app-news-card [news]="item"></app-news-card>
+          }
+        </div>
+      }
+    </div>
   </section>
 
-  <section class="cta-section">
-    <div class="container cta-inner">
-      <div>
-        <span class="eyebrow">Sigue explorando</span>
-        <h2>Encuentra información útil para tu formación</h2>
+  <section class="section section-alt">
+    <div class="container">
+      <div class="cta-box">
+        <div>
+          <h2>Encuentra información que te ayude a seguir aprendiendo</h2>
+          <p>Busca por palabra, filtra por categoría y guarda tus noticias favoritas.</p>
+        </div>
+        <a class="btn btn-primary" routerLink="/noticias">Explorar contenido</a>
       </div>
-      <a class="btn btn-primary" routerLink="/noticias">Explorar noticias</a>
     </div>
   </section>
 </main>

@@ -1,4 +1,4 @@
-<main id="main" class="container section">
+<main id="main" class="container article-shell">
   @if (error) {
     <div class="empty-state">
       <h1>Noticia no disponible</h1>
@@ -46,21 +46,25 @@
       </aside>
     </div>
 
-    @if (related.length) {
-      <section class="related-section">
-        <h2>Noticias relacionadas</h2>
-        <div class="related-list">
-          @for (relatedNews of related; track relatedNews.id) {
-            <a class="related-item" [routerLink]="['/noticias', relatedNews.id]">
-              <img [src]="relatedNews.imagen" alt="">
-              <span>
-                <strong>{{ relatedNews.titulo }}</strong>
-                <small>{{ relatedNews.categoria }}</small>
-              </span>
-            </a>
-          }
+    <section class="related-section" aria-labelledby="related-title">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Continúa explorando</span>
+          <h2 id="related-title">Noticias relacionadas</h2>
         </div>
-      </section>
-    }
+      </div>
+
+      <div class="related-list">
+        @for (relatedNews of related; track relatedNews.id) {
+          <a class="related-item" [routerLink]="['/noticias', relatedNews.id]">
+            <img [src]="relatedNews.imagen" alt="">
+            <span>
+              <strong>{{ relatedNews.titulo }}</strong>
+              <small>{{ relatedNews.categoria }}</small>
+            </span>
+          </a>
+        }
+      </div>
+    </section>
   }
 </main>

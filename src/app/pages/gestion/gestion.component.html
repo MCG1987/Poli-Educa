@@ -15,35 +15,88 @@
   <section class="admin-layout">
     <div class="admin-panel">
       <h2>Crear noticia</h2>
-      <form #newsForm="ngForm" (ngSubmit)="create(newsForm)">
+
+      <form #newsForm="ngForm" (ngSubmit)="create(newsForm)" novalidate>
         <div class="form-grid">
           <div class="field-group">
             <label for="admin-title">Título *</label>
-            <input id="admin-title" name="titulo" type="text" [(ngModel)]="model.titulo" minlength="8" required>
+            <input
+              id="admin-title"
+              name="titulo"
+              type="text"
+              [(ngModel)]="model.titulo"
+              #titulo="ngModel"
+              [class.invalid]="titulo.touched && titulo.invalid"
+              minlength="8"
+              required>
+            <span class="field-error">
+              @if (titulo.touched && titulo.invalid) { Ingresa un título de al menos 8 caracteres. }
+            </span>
           </div>
 
           <div class="field-group">
             <label for="admin-category">Categoría *</label>
-            <select id="admin-category" name="categoria" [(ngModel)]="model.categoria" required>
+            <select
+              id="admin-category"
+              name="categoria"
+              [(ngModel)]="model.categoria"
+              #categoria="ngModel"
+              [class.invalid]="categoria.touched && categoria.invalid"
+              required>
               <option>Educación</option>
               <option>Tecnología</option>
               <option>Becas</option>
             </select>
+            <span class="field-error">
+              @if (categoria.touched && categoria.invalid) { Selecciona una categoría. }
+            </span>
           </div>
 
           <div class="field-group">
             <label for="admin-date">Fecha *</label>
-            <input id="admin-date" name="fecha" type="date" [(ngModel)]="model.fecha" required>
+            <input
+              id="admin-date"
+              name="fecha"
+              type="date"
+              [(ngModel)]="model.fecha"
+              #fecha="ngModel"
+              [class.invalid]="fecha.touched && fecha.invalid"
+              required>
+            <span class="field-error">
+              @if (fecha.touched && fecha.invalid) { Selecciona una fecha. }
+            </span>
           </div>
 
           <div class="field-group">
             <label for="admin-description">Descripción breve *</label>
-            <textarea id="admin-description" name="descripcion" [(ngModel)]="model.descripcion" minlength="20" maxlength="240" required></textarea>
+            <textarea
+              id="admin-description"
+              name="descripcion"
+              [(ngModel)]="model.descripcion"
+              #descripcion="ngModel"
+              [class.invalid]="descripcion.touched && descripcion.invalid"
+              minlength="20"
+              maxlength="240"
+              required></textarea>
+            <span class="field-error">
+              @if (descripcion.touched && descripcion.invalid) { Ingresa una descripción de al menos 20 caracteres. }
+            </span>
           </div>
 
           <div class="field-group">
             <label for="admin-content">Contenido *</label>
-            <textarea id="admin-content" name="contenido" [(ngModel)]="model.contenido" minlength="40" required placeholder="Puedes separar párrafos dejando una línea en blanco."></textarea>
+            <textarea
+              id="admin-content"
+              name="contenido"
+              [(ngModel)]="model.contenido"
+              #contenido="ngModel"
+              [class.invalid]="contenido.touched && contenido.invalid"
+              minlength="40"
+              required
+              placeholder="Puedes separar párrafos dejando una línea en blanco."></textarea>
+            <span class="field-error">
+              @if (contenido.touched && contenido.invalid) { Ingresa un contenido de al menos 40 caracteres. }
+            </span>
           </div>
 
           <button class="btn btn-primary" type="submit">Crear noticia</button>

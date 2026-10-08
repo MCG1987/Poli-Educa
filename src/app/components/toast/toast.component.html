@@ -1,0 +1,7 @@
+@if (toast$ | async; as toast) {
+  <div class="toast-container" aria-live="polite">
+    <div class="toast visible" [class.toast-success]="toast.type === 'success'">
+      {{ toast.text }}
+    </div>
+  </div>
+}

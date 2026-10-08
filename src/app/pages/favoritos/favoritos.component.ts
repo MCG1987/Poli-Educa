@@ -1,6 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ToastService } from '../../components/toast/toast.service';
 import { Noticia } from '../../models/noticia';
 import { FavoritosService } from '../../services/favoritos.service';
 import { NoticiasService } from '../../services/noticias.service';
@@ -14,6 +15,7 @@ import { NoticiasService } from '../../services/noticias.service';
 export class FavoritosComponent implements OnInit, OnDestroy {
   private readonly favoritosService = inject(FavoritosService);
   private readonly noticiasService = inject(NoticiasService);
+  private readonly toast = inject(ToastService);
   private subscription?: Subscription;
 
   favorites: Noticia[] = [];
@@ -31,12 +33,14 @@ export class FavoritosComponent implements OnInit, OnDestroy {
 
   remove(id: number): void {
     this.favoritosService.remove(id);
+    this.toast.show('Noticia eliminada de favoritos.', 'info');
   }
 
   private async loadFavorites(): Promise<void> {
     try {
       const ids = this.favoritosService.ids;
       const all = await this.noticiasService.getAllNews();
+
       this.favorites = ids
         .map((id) => all.find((item) => Number(item.id) === Number(id)))
         .filter((item): item is Noticia => Boolean(item));
@@ -44,6 +48,8 @@ export class FavoritosComponent implements OnInit, OnDestroy {
       if (this.favorites.length !== ids.length) {
         this.favoritosService.replace(this.favorites.map((item) => item.id));
       }
+
+      this.error = '';
     } catch {
       this.error = 'No fue posible cargar tus favoritos.';
     }

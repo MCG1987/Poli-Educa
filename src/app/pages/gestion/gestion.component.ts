@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ToastService } from '../../components/toast/toast.service';
 import { Noticia, NuevaNoticia } from '../../models/noticia';
 import { NoticiasService } from '../../services/noticias.service';
 
@@ -12,10 +13,10 @@ import { NoticiasService } from '../../services/noticias.service';
 })
 export class GestionComponent implements OnInit {
   private readonly noticiasService = inject(NoticiasService);
+  private readonly toast = inject(ToastService);
 
   news: Noticia[] = [];
   error = '';
-
   model: NuevaNoticia = this.emptyModel();
 
   async ngOnInit(): Promise<void> {
@@ -31,18 +32,23 @@ export class GestionComponent implements OnInit {
     this.noticiasService.addCustomNews(this.model);
     this.model = this.emptyModel();
     form.resetForm(this.model);
+    this.toast.show('Noticia creada correctamente.', 'success');
     await this.loadNews();
   }
 
   async remove(item: Noticia): Promise<void> {
     if (!window.confirm(`¿Eliminar la noticia “${item.titulo}”?`)) return;
+
     await this.noticiasService.deleteNews(item.id);
+    this.toast.show('Noticia eliminada.', 'info');
     await this.loadNews();
   }
 
   async reset(): Promise<void> {
     if (!window.confirm('¿Restaurar el listado original? Se eliminarán las noticias creadas en este navegador y se recuperarán las noticias base.')) return;
+
     this.noticiasService.resetNewsChanges();
+    this.toast.show('Listado restaurado.', 'success');
     await this.loadNews();
   }
 
