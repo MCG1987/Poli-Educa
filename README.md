@@ -156,8 +156,16 @@ La rama `main` contiene la versión Angular correspondiente a la Entrega 3.
 
 La rama `semana-5-final` conserva la versión HTML, CSS y JavaScript utilizada como cierre de la Entrega 2.
 
+## Despliegue
+
+La aplicación Angular está publicada con GitHub Pages.
+
+```text
+https://mcg1987.github.io/Poli-Educa/
+```
+
+La compilación de producción utiliza como ruta base `/Poli-Educa/` y genera también un `404.html` para permitir la navegación de las rutas de Angular en GitHub Pages.
+
 ## Estado de la Entrega 3
 
-La migración funcional a Angular, la organización por componentes, el data binding y los ajustes responsive están implementados.
-
-El despliegue final de la aplicación Angular se configura en el siguiente paso del proceso de entrega.
+La migración funcional a Angular, la organización por componentes, el data binding, los ajustes responsive y el despliegue público están implementados.
