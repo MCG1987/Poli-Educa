@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "titulo": "Nuevos programas académicos amplían la oferta universitaria",
+    "categoria": "Educación",
+    "fecha": "2026-09-04",
+    "autor": "Equipo Poli-Educa",
+    "descripcion": "Instituciones de educación superior presentan nuevas alternativas de formación para responder a las necesidades actuales de los estudiantes.",
+    "contenido": [
+      "La educación superior continúa adaptándose a los cambios del entorno académico y laboral. Diferentes instituciones han fortalecido su oferta con programas que combinan fundamentos profesionales, herramientas digitales y espacios de aprendizaje práctico.",
+      "Para los estudiantes, esta ampliación representa nuevas posibilidades para elegir rutas de formación acordes con sus intereses. También facilita el acceso a contenidos relacionados con tecnología, innovación, gestión y otras áreas con alta demanda.",
+      "Antes de seleccionar un programa es recomendable revisar el plan de estudios, la modalidad, los requisitos de ingreso y las oportunidades de continuidad académica. Una decisión informada permite aprovechar mejor la experiencia universitaria."
+    ],
+    "imagen": "img/noticia-1.svg",
+    "destacada": true
+  },
+  {
+    "id": 2,
+    "titulo": "La inteligencia artificial transforma la forma de aprender",
+    "categoria": "Tecnología",
+    "fecha": "2026-09-03",
+    "autor": "Equipo Poli-Educa",
+    "descripcion": "Herramientas de inteligencia artificial se incorporan a procesos educativos como apoyo para estudiar, practicar y organizar información.",
+    "contenido": [
+      "La inteligencia artificial se ha convertido en una herramienta frecuente dentro de distintos entornos de aprendizaje. Su uso puede apoyar la búsqueda de información, la generación de ejercicios, la organización de ideas y la explicación de conceptos.",
+      "El valor de estas herramientas depende del uso que realice cada estudiante. Es importante verificar la información recibida, conservar el criterio propio y utilizar la tecnología como apoyo, no como sustituto del proceso de aprendizaje.",
+      "Los docentes también encuentran oportunidades para crear actividades, adaptar materiales y ofrecer nuevas formas de acompañamiento. El reto consiste en integrar estas soluciones de manera responsable y transparente."
+    ],
+    "imagen": "img/noticia-2.svg",
+    "destacada": true
+  },
+  {
+    "id": 3,
+    "titulo": "Abren convocatoria de becas para estudiantes",
+    "categoria": "Becas",
+    "fecha": "2026-09-02",
+    "autor": "Equipo Poli-Educa",
+    "descripcion": "Una nueva convocatoria reúne opciones de apoyo económico para estudiantes interesados en continuar su formación académica.",
+    "contenido": [
+      "Las convocatorias de becas permiten que más estudiantes conozcan alternativas de financiación y apoyo para continuar sus estudios. Los beneficios pueden cubrir diferentes porcentajes de matrícula o gastos relacionados con la formación.",
+      "Cada convocatoria establece requisitos particulares, por lo que es necesario revisar con atención fechas, documentos, condiciones académicas y criterios de selección antes de realizar la inscripción.",
+      "Organizar los documentos con anticipación y verificar la información publicada por la institución responsable ayuda a evitar errores durante el proceso de postulación."
+    ],
+    "imagen": "img/noticia-3.svg",
+    "destacada": true
+  },
+  {
+    "id": 4,
+    "titulo": "Bibliotecas digitales fortalecen el acceso a recursos de estudio",
+    "categoria": "Educación",
+    "fecha": "2026-08-29",
+    "autor": "Equipo Poli-Educa",
+    "descripcion": "Las plataformas de consulta digital facilitan el acceso a libros, artículos y materiales académicos desde diferentes dispositivos.",
+    "contenido": [
+      "Las bibliotecas digitales complementan los servicios tradicionales al ofrecer acceso remoto a diferentes tipos de recursos académicos. Esto resulta especialmente útil para estudiantes que requieren consultar materiales fuera de los horarios presenciales.",
+      "Además de libros electrónicos, muchas plataformas incluyen artículos científicos, bases de datos, repositorios institucionales y herramientas para organizar referencias bibliográficas.",
+      "Una búsqueda efectiva requiere definir palabras clave claras y evaluar la calidad de las fuentes encontradas. Estas prácticas fortalecen los procesos de investigación y estudio independiente."
+    ],
+    "imagen": "img/noticia-4.svg",
+    "destacada": false
+  },
+  {
+    "id": 5,
+    "titulo": "Herramientas colaborativas facilitan los trabajos en equipo",
+    "categoria": "Tecnología",
+    "fecha": "2026-08-27",
+    "autor": "Equipo Poli-Educa",
+    "descripcion": "Aplicaciones en línea permiten distribuir tareas, compartir documentos y realizar seguimiento al avance de proyectos académicos.",
+    "contenido": [
+      "El trabajo colaborativo puede mejorar cuando el equipo cuenta con herramientas para organizar responsabilidades y centralizar la información. Los documentos compartidos y tableros de tareas ayudan a mantener visible el avance del proyecto.",
+      "Para aprovechar estas soluciones es necesario acordar reglas sencillas: definir responsables, establecer fechas y mantener actualizada la información que cada integrante aporta.",
+      "La tecnología no reemplaza la comunicación del equipo, pero puede reducir confusiones y facilitar la coordinación cuando se utiliza con una estructura clara."
+    ],
+    "imagen": "img/noticia-5.svg",
+    "destacada": false
+  },
+  {
+    "id": 6,
+    "titulo": "Consejos para preparar una postulación a una beca",
+    "categoria": "Becas",
+    "fecha": "2026-08-25",
+    "autor": "Equipo Poli-Educa",
+    "descripcion": "Revisar requisitos, reunir documentos y respetar las fechas son pasos fundamentales antes de enviar una postulación.",
+    "contenido": [
+      "Una postulación organizada comienza con la lectura completa de los requisitos. No todas las becas solicitan los mismos documentos y algunas establecen condiciones académicas o personales específicas.",
+      "Es recomendable crear una lista de verificación con los documentos requeridos, fechas límite y pasos de inscripción. También conviene conservar copias de los archivos enviados.",
+      "Antes de finalizar el proceso debe revisarse que los datos estén completos y que los documentos sean legibles. Una revisión final puede evitar que una solicitud sea descartada por errores básicos."
+    ],
+    "imagen": "img/noticia-6.svg",
+    "destacada": false
+  },
+  {
+    "id": 7,
+    "titulo": "Técnicas de estudio ayudan a organizar mejor el tiempo",
+    "categoria": "Educación",
+    "fecha": "2026-08-22",
+    "autor": "Equipo Poli-Educa",
+    "descripcion": "Planificar sesiones cortas, priorizar tareas y realizar pausas puede mejorar la constancia durante la preparación académica.",
+    "contenido": [
+      "Una agenda de estudio realista ayuda a distribuir las actividades y evita concentrar todas las tareas en el último momento. El primer paso consiste en identificar prioridades y estimar cuánto tiempo requiere cada actividad.",
+      "Dividir una tarea grande en pasos pequeños facilita medir el progreso. También es útil reservar periodos de descanso para mantener la concentración durante sesiones prolongadas.",
+      "Cada estudiante puede ajustar las técnicas según sus necesidades. Lo importante es mantener una rutina que pueda sostenerse y revisar periódicamente qué métodos están funcionando mejor."
+    ],
+    "imagen": "img/noticia-7.svg",
+    "destacada": false
+  },
+  {
+    "id": 8,
+    "titulo": "Seguridad digital: buenas prácticas para estudiantes",
+    "categoria": "Tecnología",
+    "fecha": "2026-08-20",
+    "autor": "Equipo Poli-Educa",
+    "descripcion": "Contraseñas seguras, verificación de enlaces y actualizaciones son medidas sencillas para proteger cuentas y dispositivos.",
+    "contenido": [
+      "El uso frecuente de plataformas académicas hace necesario prestar atención a la seguridad de las cuentas. Una contraseña única y difícil de adivinar reduce el riesgo de acceso no autorizado.",
+      "También es importante revisar la dirección de los sitios antes de ingresar credenciales y evitar abrir enlaces sospechosos recibidos por mensajes o correos no esperados.",
+      "Mantener los sistemas y aplicaciones actualizados completa estas buenas prácticas. La prevención diaria suele ser más sencilla que recuperar información después de un incidente."
+    ],
+    "imagen": "img/noticia-8.svg",
+    "destacada": false
+  },
+  {
+    "id": 9,
+    "titulo": "Opciones de apoyo académico para iniciar un nuevo semestre",
+    "categoria": "Becas",
+    "fecha": "2026-08-18",
+    "autor": "Equipo Poli-Educa",
+    "descripcion": "Tutorías, monitorías y programas de acompañamiento complementan las ayudas económicas disponibles para los estudiantes.",
+    "contenido": [
+      "Los apoyos para estudiantes no se limitan a las becas económicas. Muchas instituciones ofrecen tutorías, monitorías, asesorías y espacios de acompañamiento que pueden facilitar la adaptación al semestre.",
+      "Consultar estos servicios desde el inicio permite utilizarlos antes de que aparezcan dificultades académicas. Algunos programas requieren inscripción previa o cuentan con horarios específicos.",
+      "Conocer los canales institucionales y pedir orientación cuando sea necesario hace parte de una gestión responsable del proceso de formación."
+    ],
+    "imagen": "img/noticia-9.svg",
+    "destacada": false
+  }
+]
