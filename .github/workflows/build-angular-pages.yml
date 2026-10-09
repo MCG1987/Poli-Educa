@@ -1,0 +1,50 @@
+name: Build Angular for GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund --package-lock=false
+
+      - name: Build Angular
+        run: npm run build -- --base-href /Poli-Educa/
+
+      - name: Prepare GitHub Pages files
+        shell: bash
+        run: |
+          test -f dist/poli-educa/browser/index.html
+          cp -R dist/poli-educa/browser/. .
+          cp index.html 404.html
+          touch .nojekyll
+
+      - name: Commit generated site
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No hay cambios de compilación por publicar."
+            exit 0
+          fi
+          git commit -m "build: publicar aplicación Angular en GitHub Pages"
+          git push
