@@ -1,99 +1,163 @@
-# Poli-Educa - Entrega 2 (Semana 5)
+# Poli-Educa - Entrega 3 (Semana 7)
 
-Prototipo funcional de una plataforma Web de noticias educativas desarrollado con **HTML, CSS y JavaScript**, con carga dinámica desde **JSON**, favoritos con **localStorage**, formularios con validación y gestión básica de noticias.
+Aplicación Web de noticias educativas desarrollada con **Angular**, a partir del prototipo funcional realizado en HTML, CSS y JavaScript para la Entrega 2.
 
-## Funcionalidades incluidas
+La versión actual conserva las funcionalidades principales del prototipo y las implementa mediante componentes, servicios, Angular Router, data binding, formularios y almacenamiento local.
 
-- Home con bienvenida, llamados a la acción y noticias destacadas dinámicas.
-- Listado de noticias cargado desde `data/noticias.json` mediante `fetch()`.
-- Búsqueda por texto, filtros por categoría y paginación.
-- Vista de detalle por identificador (`detalle.html?id=...`).
+## Funcionalidades
+
+- Inicio con noticias destacadas cargadas dinámicamente.
+- Listado de noticias desde `public/data/noticias.json`.
+- Búsqueda por texto.
+- Filtros por categoría.
+- Paginación.
+- Vista de detalle mediante la ruta `/noticias/:id`.
+- Noticias relacionadas.
 - Favoritos persistentes con `localStorage`.
-- Página personalizada de favoritos con opción de quitar noticias.
-- Formulario de contacto con campos obligatorios, validación de correo y mensaje de confirmación.
+- Contador de favoritos en la navegación.
+- Formulario de contacto con validaciones.
 - Página Nosotros.
-- Mini CRUD requerido: creación y eliminación de noticias desde `gestion.html`.
-- Persistencia local para las noticias creadas/eliminadas sin modificar el JSON original.
+- Mini CRUD para crear y eliminar noticias.
+- Restauración de las noticias base.
 - Diseño responsive para escritorio, tableta y móvil.
-- Código separado por responsabilidades y comentado.
-- Recursos gráficos locales en SVG, sin dependencias externas.
+- Navegación mediante Angular Router.
+- Componentes reutilizables.
+- Servicios para noticias y favoritos.
+- Mensajes de confirmación para acciones principales.
 
-## Estructura
+## Tecnologías
+
+- Angular 21.2.4
+- TypeScript
+- HTML
+- CSS
+- Angular Router
+- Angular Forms
+- HttpClient
+- RxJS
+- JSON local
+- localStorage
+
+## Estructura principal
 
 ```text
-poli-educa/
-├── index.html
-├── noticias.html
-├── detalle.html
-├── favoritos.html
-├── nosotros.html
-├── contacto.html
-├── gestion.html
-├── css/
+Poli-Educa/
+├── public/
+│   ├── data/
+│   │   └── noticias.json
+│   └── img/
+│       ├── logo.svg
+│       └── noticia-1.svg ... noticia-9.svg
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── footer/
+│   │   │   ├── header/
+│   │   │   ├── news-card/
+│   │   │   └── toast/
+│   │   ├── models/
+│   │   │   └── noticia.ts
+│   │   ├── pages/
+│   │   │   ├── contacto/
+│   │   │   ├── detalle/
+│   │   │   ├── favoritos/
+│   │   │   ├── gestion/
+│   │   │   ├── home/
+│   │   │   ├── nosotros/
+│   │   │   └── noticias/
+│   │   ├── services/
+│   │   │   ├── favoritos.service.ts
+│   │   │   └── noticias.service.ts
+│   │   ├── app.component.html
+│   │   ├── app.component.ts
+│   │   └── app.routes.ts
+│   ├── index.html
+│   ├── main.ts
 │   └── styles.css
-├── data/
-│   └── noticias.json
-├── img/
-│   ├── logo.svg
-│   └── noticia-1.svg ... noticia-9.svg
-├── js/
-│   ├── common.js
-│   ├── data.js
-│   ├── home.js
-│   ├── noticias.js
-│   ├── detalle.js
-│   ├── favoritos.js
-│   ├── contacto.js
-│   └── gestion.js
-├── VERIFICACION.md
+├── angular.json
+├── package.json
+├── tsconfig.app.json
+├── tsconfig.json
 └── README.md
 ```
 
-## Cómo ejecutar
+## Rutas
 
-### Opción manual
-
-Desde la carpeta del proyecto ejecuta:
-
-```bash
-python -m http.server 5500
+```text
+/                 Inicio
+/noticias         Listado de noticias
+/noticias/:id     Detalle de noticia
+/favoritos        Noticias favoritas
+/nosotros         Información del proyecto
+/contacto         Formulario de contacto
+/gestion          Gestión de noticias
 ```
 
-Luego abre `http://localhost:5500`.
+## Uso de Angular
 
-> El proyecto intenta cargar las noticias desde `data/noticias.json` con `fetch()`. También contiene una copia de respaldo en JavaScript para que el prototipo pueda visualizarse aun cuando el navegador bloquee `fetch()` al abrir los archivos directamente con `file://`.
+El proyecto utiliza elementos básicos solicitados para la entrega final:
 
-## Cómo verificar los requisitos
-
-1. Abre **Inicio**: deben aparecer tres noticias destacadas cargadas dinámicamente.
-2. Abre **Noticias**: prueba búsqueda, categorías y flechas de paginación.
-3. Pulsa **Ver más**: debe abrir el detalle de la noticia seleccionada.
-4. Agrega una noticia a **Favoritos** y comprueba que permanece tras recargar la página.
-5. Entra a **Favoritos** y prueba **Ver detalle** y **Quitar**.
-6. Abre **Contacto**, deja campos vacíos o escribe un correo inválido y comprueba las validaciones. Luego completa correctamente el formulario y verifica el mensaje de confirmación.
-7. Desde **Noticias**, entra a **Gestionar noticias**. Crea una noticia y luego elimínala. También puedes eliminar una noticia base y restaurar el listado original.
-8. Cambia el ancho de la ventana para comprobar el diseño responsive.
+- **Componentes:** Header, Footer, News Card, Toast y páginas independientes.
+- **Interpolación:** `{{ valor }}`.
+- **Property binding:** por ejemplo `[src]`, `[class.active]` y `[routerLink]`.
+- **Event binding:** por ejemplo `(click)` y `(ngSubmit)`.
+- **Two-way binding:** `[(ngModel)]` en formularios, búsqueda y gestión.
+- **Servicios:** separación de la lógica de noticias y favoritos.
+- **Routing:** navegación entre vistas sin utilizar archivos HTML independientes.
 
 ## Manejo de datos
 
-`data/noticias.json` contiene las noticias base. Como este proyecto es únicamente Front-End y no incluye backend, el navegador no puede modificar directamente ese archivo. Por esa razón:
+El archivo `public/data/noticias.json` contiene las noticias base.
 
-- Las noticias nuevas se guardan en `localStorage`.
-- Las noticias eliminadas se registran en `localStorage` y se ocultan de la fuente base.
-- El botón **Restaurar base** elimina esos cambios locales.
-- Los favoritos también se almacenan en `localStorage`.
+Como el proyecto es Front-End y no utiliza backend:
 
-## Repositorio GitHub
+- Las noticias creadas se guardan en `localStorage`.
+- Las noticias base eliminadas se registran en `localStorage`.
+- El botón **Restaurar base** elimina los cambios locales.
+- Los favoritos se almacenan en `localStorage`.
 
-El proyecto está preparado para subirse directamente a GitHub. Una vez creado el repositorio, desde esta carpeta puede ejecutarse:
+## Ejecutar localmente
+
+Se requiere Node.js y npm.
+
+Instalar las dependencias:
 
 ```bash
-git init
-git add .
-git commit -m "Entrega 2: prototipo funcional Poli-Educa"
-git branch -M main
-git remote add origin URL_DEL_REPOSITORIO
-git push -u origin main
+npm install
 ```
 
-No se requieren dependencias ni proceso de compilación, por lo que puede publicarse directamente con GitHub Pages desde la rama `main`.
+Ejecutar el servidor de desarrollo:
+
+```bash
+npm start
+```
+
+Luego abrir la dirección indicada por Angular en la terminal, normalmente:
+
+```text
+http://localhost:4200
+```
+
+Para generar la versión de producción:
+
+```bash
+npm run build
+```
+
+## Repositorio
+
+Repositorio académico:
+
+```text
+MCG1987/Poli-Educa
+```
+
+La rama `main` contiene la versión Angular correspondiente a la Entrega 3.
+
+La rama `semana-5-final` conserva la versión HTML, CSS y JavaScript utilizada como cierre de la Entrega 2.
+
+## Estado de la Entrega 3
+
+La migración funcional a Angular, la organización por componentes, el data binding y los ajustes responsive están implementados.
+
+El despliegue final de la aplicación Angular se configura en el siguiente paso del proceso de entrega.
