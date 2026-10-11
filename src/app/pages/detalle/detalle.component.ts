@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ToastService } from '../../components/toast/toast.service';
@@ -19,9 +19,10 @@ export class DetalleComponent implements OnInit {
   private readonly toast = inject(ToastService);
   private readonly title = inject(Title);
 
-  item: Noticia | null = null;
-  related: Noticia[] = [];
-  error = '';
+  readonly item = signal<Noticia | null>(null);
+  readonly related = signal<Noticia[]>([]);
+  readonly error = signal('');
+  readonly loading = signal(true);
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -31,13 +32,15 @@ export class DetalleComponent implements OnInit {
   }
 
   get isFavorite(): boolean {
-    return this.item ? this.favoritos.isFavorite(this.item.id) : false;
+    const current = this.item();
+    return current ? this.favoritos.isFavorite(current.id) : false;
   }
 
   toggleFavorite(): void {
-    if (!this.item) return;
+    const current = this.item();
+    if (!current) return;
 
-    const nowFavorite = this.favoritos.toggle(this.item.id);
+    const nowFavorite = this.favoritos.toggle(current.id);
     this.toast.show(
       nowFavorite ? 'Noticia agregada a favoritos.' : 'Noticia eliminada de favoritos.',
       nowFavorite ? 'success' : 'info'
@@ -69,36 +72,44 @@ export class DetalleComponent implements OnInit {
   }
 
   private async loadNews(id: number): Promise<void> {
-    this.item = null;
-    this.related = [];
-    this.error = '';
+    this.loading.set(true);
+    this.item.set(null);
+    this.related.set([]);
+    this.error.set('');
 
-    if (!id) {
-      this.error = 'El enlace no contiene un identificador válido.';
+    if (!Number.isFinite(id) || id <= 0) {
+      this.error.set('El enlace no contiene un identificador válido.');
       this.title.setTitle('Detalle de noticia | Poli-Educa');
+      this.loading.set(false);
       return;
     }
 
     try {
-      this.item = await this.noticiasService.getNewsById(id);
+      const news = await this.noticiasService.getNewsById(id);
 
-      if (!this.item) {
-        this.error = 'La noticia pudo haber sido eliminada o el enlace no es correcto.';
+      if (!news) {
+        this.error.set('La noticia pudo haber sido eliminada o el enlace no es correcto.');
         this.title.setTitle('Detalle de noticia | Poli-Educa');
         return;
       }
 
-      this.title.setTitle(`${this.item.titulo} | Poli-Educa`);
-      this.related = await this.noticiasService.getRelatedNews(
-        this.item.id,
-        this.item.categoria,
+      this.item.set(news);
+      this.title.setTitle(`${news.titulo} | Poli-Educa`);
+
+      const relatedNews = await this.noticiasService.getRelatedNews(
+        news.id,
+        news.categoria,
         3
       );
+      this.related.set(relatedNews);
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch {
-      this.error = 'No fue posible cargar el detalle de la noticia.';
+    } catch (error) {
+      console.error('Error cargando el detalle de la noticia:', error);
+      this.error.set('No fue posible cargar el detalle de la noticia.');
       this.title.setTitle('Detalle de noticia | Poli-Educa');
+    } finally {
+      this.loading.set(false);
     }
   }
 }
