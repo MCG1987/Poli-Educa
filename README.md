@@ -164,7 +164,7 @@ La aplicación Angular está publicada con GitHub Pages.
 https://mcg1987.github.io/Poli-Educa/
 ```
 
-La compilación de producción utiliza como ruta base `/Poli-Educa/` y genera también un `404.html` para permitir la navegación de las rutas de Angular en GitHub Pages.
+La compilación de producción utiliza como ruta base `/Poli-Educa/` y el enrutamiento de Angular usa `withHashLocation()` para que las vistas internas funcionen correctamente en GitHub Pages. Por ejemplo, el detalle de una noticia se publica como `https://mcg1987.github.io/Poli-Educa/#/noticias/2`.
 
 ## Estado de la Entrega 3
 
