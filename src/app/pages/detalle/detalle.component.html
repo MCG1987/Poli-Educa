@@ -1,11 +1,16 @@
 <main id="main" class="container article-shell">
-  @if (error) {
+  @if (loading()) {
+    <div class="empty-state">
+      <h1>Cargando noticia...</h1>
+      <p>Estamos preparando la información completa.</p>
+    </div>
+  } @else if (error()) {
     <div class="empty-state">
       <h1>Noticia no disponible</h1>
-      <p>{{ error }}</p>
+      <p>{{ error() }}</p>
       <a class="btn btn-primary" routerLink="/noticias">Volver a noticias</a>
     </div>
-  } @else if (item; as news) {
+  } @else if (item(); as news) {
     <a class="back-link" routerLink="/noticias">← Volver a noticias</a>
 
     <div class="article-layout">
@@ -55,7 +60,7 @@
       </div>
 
       <div class="related-list">
-        @for (relatedNews of related; track relatedNews.id) {
+        @for (relatedNews of related(); track relatedNews.id) {
           <a class="related-item" [routerLink]="['/noticias', relatedNews.id]">
             <img [src]="relatedNews.imagen" alt="">
             <span>
